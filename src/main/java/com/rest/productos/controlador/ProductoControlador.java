@@ -2,6 +2,7 @@ package com.rest.productos.controlador;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,10 +23,12 @@ public class ProductoControlador {
 	private ProductoServicio productoServicio;
 	
 	@RequestMapping("/")
-	public String verPaginaDeInicio(Model model) {
-		String palabraClave = "Televisor";
+	public String verPaginaDeInicio(Model model, @Param("palabraClave") String palabraClave) {
 		List<Producto> listaProductos = productoServicio.listAll(palabraClave);
+		
 		model.addAttribute("listaProductos", listaProductos);
+		model.addAttribute("palabraClave", palabraClave);
+		
 		return "index";
 	}
 	
