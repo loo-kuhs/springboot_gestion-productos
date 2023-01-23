@@ -28,7 +28,8 @@
 			       placeholder="Valor a buscar del producto" th:value="${palabraClave}" required>
 		</div>
 		<input type="submit" class="btn btn-info mb-2 mr-1" value="Buscar">
-		<input type="submit" class="btn btn-secondary mb-2" value="Limpiar">
+		<input type="button" class="btn btn-secondary mb-2" value="Limpiar"
+		       onclick="limpiarCampos()">
 		
 	</form>
 	<table class="table">
@@ -59,4 +60,5 @@
 </div>
 
 </body>
+<script src="/js/main.js"></script>
 </html>
