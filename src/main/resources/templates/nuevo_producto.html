@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 	<meta charset="UTF-8">
 	<title>Registro de producto</title>
@@ -8,7 +8,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-	<a class="navbar-brand" href="/">Registro de producto</a>
+	<a class="navbar-brand" href="/">Control de productos</a>
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
@@ -19,7 +19,44 @@
 </nav>
 
 <div class="container text-center">
-
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+			<h1>Registro de producto</h1>
+			<div class="card-body">
+				
+				<form th:action="@{/guardar}" th:object="${producto}" method="post">
+					
+					<div class="form-group">
+						<label for="nombre">Nombre</label>
+						<input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}"
+						       placeholder="Ingrese el nombre del producto" autocomplete="off" required>
+					</div>
+					
+					<div class="form-group">
+						<label for="marca">Marca</label>
+						<input type="text" class="form-control" id="marca" name="marca" th:field="*{marca}"
+						       placeholder="Ingrese la marca del producto" autocomplete="off" required>
+					</div>
+					
+					<div class="form-group">
+						<label for="hechoEn">Hecho en</label>
+						<input type="text" class="form-control" id="hechoEn" name="hechoEn" th:field="*{hechoEn}"
+						       placeholder="Ingrese el país de origen del producto" autocomplete="off" required>
+					</div>
+					
+					<div class="form-group">
+						<label for="precio">Precio</label>
+						<input type="number" class="form-control" id="precio" name="precio" th:field="*{precio}"
+						       placeholder="Ingrese el precio del producto" autocomplete="off" required>
+					</div>
+					
+					<div class="box-footer">
+						<button type="submit" class="btn btn-success">Guardar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 </body>
