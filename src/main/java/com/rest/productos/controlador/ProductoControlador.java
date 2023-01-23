@@ -23,7 +23,8 @@ public class ProductoControlador {
 	
 	@RequestMapping("/")
 	public String verPaginaDeInicio(Model model) {
-		List<Producto> listaProductos = productoServicio.listAll();
+		String palabraClave = "Televisor";
+		List<Producto> listaProductos = productoServicio.listAll(palabraClave);
 		model.addAttribute("listaProductos", listaProductos);
 		return "index";
 	}
@@ -47,5 +48,11 @@ public class ProductoControlador {
 		Producto producto = productoServicio.get(id);
 		modelo.addObject("producto", producto);
 		return modelo;
+	}
+	
+	@RequestMapping("/eliminar/{id}")
+	public String eliminarProducto(@PathVariable(name = "id") Long id) {
+		productoServicio.delete(id);
+		return "redirect:/";
 	}
 }
